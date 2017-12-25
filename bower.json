@@ -1,0 +1,26 @@
+{
+  "name": "ng-image-popup",
+  "version": "1.0.1",
+  "homepage": "https://github.com/Coralma/ng-image-popup",
+  "authors": [
+    "Coral <maqujun@yahoo.com>"
+  ],
+  "keywords": [
+    "angular",
+    "upload"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.3",
+    "bootstrap": "~3.3.5",
+    "lodash": "~3.10.1"
+  }
+}

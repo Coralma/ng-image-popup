@@ -1,0 +1,62 @@
+#popup-mask {
+    display: none;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: #aaa;
+    z-index: 99001;
+    -moz-opacity: 0.3;
+    opacity: .30;
+    filter: alpha(opacity=30);
+}
+
+#popup-image {
+    display: none;
+    position: fixed;
+    top: 20px;
+    padding-top: 20px;
+    height:auto;
+    background-color: transparent;
+    width: 100%;
+    text-align: center;
+    z-index: 99002;
+    overflow: auto;
+    /*border: 1px solid green;*/
+}
+
+.image-content {
+    border: 5px solid white;
+    max-width: 700px;
+}
+
+.image-related-div {
+    position: relative;
+    /*border: 1px solid red;*/
+}
+
+.popup-close-btn {
+    /*float:right;*/
+    /*display:inline-block;
+    background: transparent url("close.png") no-repeat;
+    background-size: 32px 32px;
+    height: 32px;
+    padding-left: 32px;*/
+    /*animation-duration: 2s;*/
+    animation-delay: 1s;
+    position:absolute;
+    z-index:99901;
+    background: transparent url("close-icon.png") no-repeat;
+    background-size: 32px 32px;
+    width: 32px;
+    height: 32px;
+    top: -13px;
+    right: -23px;
+}
+
+
+.img-data {
+    animation-duration: 500ms;
+    animation-delay: 100ms;
+}

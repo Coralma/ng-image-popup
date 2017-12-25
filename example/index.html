@@ -1,0 +1,70 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/angular/angular.js"></script>
+    <script src="../lib/lodash/lodash.js"></script>
+    <script src="../dist/ng-image-popup.js"></script>
+    <script src="common.base64.js"></script>
+    <link rel="stylesheet" href="../dist/ng-image-popup.css">
+    <link rel="stylesheet" href="animate.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body ng-controller="MyController">
+    <h1 class="animated infinite bounce">Example</h1>
+    <div>
+        <button type="btn btn-default" ng-click="showImage('fix1.png')">Show Image Popup</button>
+        <div style="margin-top: 20px">
+            <img ng-src="{{ dataImg }}" width="200px" ng-click="showImage(dataImg)" class="img-data animated zoomIn">
+        </div>
+    </div>
+    <div class="fix-col">
+        <div ng-repeat="part in parts track by $index">
+            <div class="part-name animated slideInDown" ng-click="showImage(part.image)" style="animation-delay: {{(50*$index)+ 'ms'}};">{{ part.name }}</div>
+            <div class="part-repeat">
+                <span class="change-rate animated slideInDown" style="animation-delay: {{(50*$index)+ 'ms'}};">更换率: {{ part.change }}</span>
+                <span class="suggest animated slideInDown" style="animation-delay: {{(50*$index)+ 'ms'}};">建议: {{ part.suggest }}</span>
+            </div>
+        </div>
+    </div>
+    <ng-image-popup></ng-image-popup>
+
+<script type="text/javascript">
+    var myApp = angular.module('myApp', ['ng-image-popup']);
+    myApp.controller('MyController', ['$scope','$filter','ImagePopupService','$timeout', function($scope, $filter, ImagePopupService,$timeout) {
+        $scope.dataImg = "car6.jpg";
+        $scope.showImage = function(img) {
+            console.log("Data is "+img);
+            ImagePopupService.start(img);
+        };
+
+        $scope.startLoading = function() {
+            BootLoadingService.start("");
+            $timeout(function() {
+                BootLoadingService.complete();
+            }, 2000);
+        }
+        $scope.startLoadingWithText = function() {
+            /*BootLoadingService.start("审核报告生产中，请稍后。。。");*/
+            BootLoadingService.start("Validation report generating, please waiting...");
+            $timeout(function() {
+                BootLoadingService.complete();
+            }, 12000);
+        }
+
+        $scope.parts = [
+            {name:'前保险杠外皮',damage: '45%', change: '94.47%', suggest: '换件', image:'img/fix/fix1.png'},
+            {name:'前保险右支架',damage: '85%', change: '92.14%', suggest: '换件',image:''},
+            {name:'前保险杠泡沫',damage: '85%', change: '93.69%', suggest: '换件',image:''},
+            {name:'进气格栅',damage: '75%', change: '90.56%', suggest: '换件',image:''},
+            {name:'左前大灯',damage: '90%', change: '99.22%', suggest: '换件',image:''},
+            {name:'左前翼子板',damage: '5%', change: '0.00%', suggest: '喷漆',image:''},
+            {name:'发动机罩',damage: '40%', change: '74.97%', suggest: '换件',image:''},
+            {name:'散热器*',damage: '45%', change: '69.72%', suggest: '换件',image:''},
+            {name:'左前纵梁支架*',damage: '15%', change: '5.76%', suggest: '维修',image:''}
+        ];
+    }]);
+</script>
+</body>
+</html>
